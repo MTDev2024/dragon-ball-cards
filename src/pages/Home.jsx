@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { getAllCharacters } from "../services/dragonBallApi";
+import CharacterCard from "../components/CharacterCard";
 
 function Home() {
-  const [characters, setCharacters] = useState([]); // Tableau vide
+  const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -36,17 +37,22 @@ function Home() {
     );
 
   return (
-    <div className="p-8">
+    <div className="p-8 ">
       <h1 className="text-4xl font-bold text-grey text-center mb-8 pt-8">
         🐉 Dragon Ball Z Characters
       </h1>
-      <div className="w-[70%] mx-auto grid grid-cols-4 gap-4 pt-10">
+      <div className="w-[70%] mx-auto grid grid-cols-4 pt-10 p-4  gap-4">
         {characters.map((character) => (
-          <div key={character.id} className="bg-gray-800 p-4 rounded">
-            <p className="text-white font-bold">{character.name}</p>
-            <p className="text-gray-400 text-sm">{character.race}</p>
-            <img src={character.image} alt={character.name} />
-          </div>
+          <CharacterCard
+            key={character.id}
+            name={character.name}
+            image={character.image}
+            race={character.race}
+            gender={character.gender}
+            affiliation={character.affiliation}
+            ki={character.ki}
+            maxKi={character.maxKi}
+          />
         ))}
       </div>
     </div>
