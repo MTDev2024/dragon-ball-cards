@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getAllCharacters } from "../services/dragonBallApi";
 import CharacterCard from "../components/CharacterCard";
+import Shenron from "../assets/Shenron.png";
 
 function Home() {
   const [characters, setCharacters] = useState([]);
@@ -38,9 +39,12 @@ function Home() {
 
   return (
     <div className="p-8 ">
-      <h1 className="text-4xl font-bold text-grey text-center mb-8 pt-8">
-        🐉 Dragon Ball Z Characters
-      </h1>
+      <div className="flex items-center justify-center gap-4 mb-8 pt-8">
+        <img src={Shenron} alt="Shenron" className="h-16" />
+        <h1 className="text-4xl font-bold text-gray-700">
+          Dragon Ball Z Characters
+        </h1>
+      </div>
       <div className="w-[70%] mx-auto grid grid-cols-4 pt-10 p-4  gap-4">
         {characters.map((character) => (
           <CharacterCard
