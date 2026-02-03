@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getAllCharacters } from "../services/dragonBallApi";
-import CharacterCard from "../components/CharacterCard";
+import CharacterGrid from "../components/CharacterGrid";
 import Shenron from "../assets/Shenron.png";
 
 function Home() {
@@ -37,30 +37,7 @@ function Home() {
       </div>
     );
 
-  return (
-    <div className="p-8 ">
-      <div className="flex items-center justify-center gap-4 mb-8 pt-8">
-        <img src={Shenron} alt="Shenron" className="h-16" />
-        <h1 className="text-4xl font-bold text-gray-700">
-          Dragon Ball Z Characters
-        </h1>
-      </div>
-      <div className="w-[70%] mx-auto grid grid-cols-4 pt-10 p-4  gap-4">
-        {characters.map((character) => (
-          <CharacterCard
-            key={character.id}
-            name={character.name}
-            image={character.image}
-            race={character.race}
-            gender={character.gender}
-            affiliation={character.affiliation}
-            ki={character.ki}
-            maxKi={character.maxKi}
-          />
-        ))}
-      </div>
-    </div>
-  );
+  return <CharacterGrid characters={characters} />;
 }
 
 export default Home;
