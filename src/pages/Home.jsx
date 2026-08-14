@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { getAllCharacters } from "../services/dragonBallApi";
 import { categorize } from "../utils/characterCategories";
+import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import CharacterRow from "../components/CharacterRow";
+import Footer from "../components/Footer";
 import LoadingSpinner from "../components/LoadingSpinner";
 
 function Home() {
@@ -40,14 +42,14 @@ function Home() {
       </div>
     );
 
-  const featured = characters.find((c) => c.id === 1) ?? characters[0];
   const rows = categorize(characters);
 
   return (
-    <div className="bg-gray-950 min-h-screen pb-16">
-      <Hero character={featured} />
+    <div className="min-h-screen bg-ink-800">
+      <Navbar />
+      <Hero />
 
-      <div className="mt-8">
+      <div className="relative z-30 -mt-10 pb-10">
         {rows.map((row) => (
           <CharacterRow
             key={row.key}
@@ -56,6 +58,8 @@ function Home() {
           />
         ))}
       </div>
+
+      <Footer />
     </div>
   );
 }

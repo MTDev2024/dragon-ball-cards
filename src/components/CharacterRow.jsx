@@ -8,30 +8,21 @@ function ScrollButton({ direction, onClick }) {
     <button
       type="button"
       onClick={onClick}
-      aria-label={isLeft ? "Défiler vers la gauche" : "Défiler vers la droite"}
-      className={`group/btn hidden md:flex items-center ${
-        isLeft ? "justify-start left-0 bg-gradient-to-r" : "justify-end right-0 bg-gradient-to-l"
-      } absolute top-0 bottom-0 z-20 w-20 from-gray-950/90 to-transparent text-white opacity-0 outline-none transition-opacity group-hover/row:opacity-100 group-focus-within/row:opacity-100 focus-visible:opacity-100`}
+      aria-label={isLeft ? "Précédent" : "Suivant"}
+      className="flex h-8 w-8 items-center justify-center rounded-full border border-white/[.12] bg-white/[.02] text-white/70 transition-all duration-200 hover:border-yellow-400/50 hover:text-yellow-400"
     >
-      <span
-        className={`flex items-center justify-center h-12 w-12 rounded-full border border-white/10 bg-gray-950/80 shadow-lg transition-all duration-200 group-hover/btn:scale-110 group-hover/btn:bg-yellow-500 group-hover/btn:text-gray-900 group-hover/btn:border-yellow-400 group-focus-visible/btn:ring-2 group-focus-visible/btn:ring-yellow-400 group-focus-visible/btn:ring-offset-2 group-focus-visible/btn:ring-offset-gray-950 ${
-          isLeft ? "ml-3" : "mr-3"
-        }`}
+      <svg
+        viewBox="0 0 24 24"
+        width="15"
+        height="15"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
       >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={2.5}
-          className="h-6 w-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d={isLeft ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7"}
-          />
-        </svg>
-      </span>
+        <path d={isLeft ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7"} />
+      </svg>
     </button>
   );
 }
@@ -50,30 +41,40 @@ function CharacterRow({ title, characters }) {
   };
 
   return (
-    <section className="mb-10">
-      <h2 className="text-2xl font-bold text-white px-6 md:px-12 mb-4">
-        {title}
-      </h2>
-
-      <div className="relative group/row">
-        <ScrollButton direction="left" onClick={() => scrollByAmount(-500)} />
-
-        <div
-          ref={scrollRef}
-          className="flex gap-4 overflow-x-auto no-scrollbar px-6 md:px-12 py-8 snap-x snap-mandatory scroll-smooth"
-        >
-          {characters.map((character) => (
-            <Link
-              key={character.id}
-              to={`/character/${character.id}`}
-              className="snap-start shrink-0"
-            >
-              <RowCard character={character} />
-            </Link>
-          ))}
+    <section className="mb-[52px]">
+      <div className="mb-[18px] flex items-end justify-between px-6 md:px-12 lg:px-14">
+        <div className="flex items-center gap-3.5">
+          <span
+            className="block h-5 w-[3px] rounded-sm"
+            style={{ background: "linear-gradient(180deg, #facc15, rgba(250,204,21,0))" }}
+          />
+          <h2 className="text-xl font-semibold tracking-[-0.01em] text-[#f4f4f6]">
+            {title}
+          </h2>
+          <span className="text-xs font-medium text-white/35">
+            {characters.length} fiches
+          </span>
         </div>
 
-        <ScrollButton direction="right" onClick={() => scrollByAmount(500)} />
+        <div className="flex gap-2">
+          <ScrollButton direction="left" onClick={() => scrollByAmount(-700)} />
+          <ScrollButton direction="right" onClick={() => scrollByAmount(700)} />
+        </div>
+      </div>
+
+      <div
+        ref={scrollRef}
+        className="flex gap-4 overflow-x-auto no-scrollbar px-6 md:px-12 lg:px-14 py-8 snap-x snap-mandatory scroll-smooth"
+      >
+        {characters.map((character) => (
+          <Link
+            key={character.id}
+            to={`/character/${character.id}`}
+            className="snap-start shrink-0"
+          >
+            <RowCard character={character} />
+          </Link>
+        ))}
       </div>
     </section>
   );
