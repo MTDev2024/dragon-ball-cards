@@ -27,3 +27,22 @@ export async function getAllCharacters() {
     throw error;
   }
 }
+
+/**
+ * Récupère un personnage Dragon Ball par son id (détails complets)
+ * @param {number|string} id
+ * @returns {Promise<Object>} Détail du personnage (avec originPlanet, transformations)
+ */
+export async function getCharacterById(id) {
+  try {
+    const response = await fetch(`${BASE_URL}/characters/${id}`);
+    if (!response.ok) {
+      throw new Error(`Erreur HTTP: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Erreur getCharacterById:", error.message);
+    throw error;
+  }
+}
