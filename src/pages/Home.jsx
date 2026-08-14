@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { getAllCharacters } from "../services/dragonBallApi";
-import CharacterGrid from "../components/CharacterGrid";
+import { categorize } from "../utils/characterCategories";
+import Hero from "../components/Hero";
+import CharacterRow from "../components/CharacterRow";
 import LoadingSpinner from "../components/LoadingSpinner";
-import Shenron from "../assets/shenron.png";
 
 function Home() {
   const [characters, setCharacters] = useState([]);
@@ -39,17 +40,22 @@ function Home() {
       </div>
     );
 
-  return (
-    <div className="p-8">
-      <div className="flex items-center justify-center gap-4 mb-8 pt-8">
-        <img src={Shenron} alt="Shenron" className="h-36" />
-        <h1 className="text-4xl font-bold text-gray-900">
-          Dragon Ball Z Characters
-        </h1>
-      </div>
+  const featured = characters.find((c) => c.id === 1) ?? characters[0];
+  const rows = categorize(characters);
 
-      {/* Grille de personnages */}
-      <CharacterGrid characters={characters} />
+  return (
+    <div className="bg-gray-950 min-h-screen pb-16">
+      <Hero character={featured} />
+
+      <div className="mt-8">
+        {rows.map((row) => (
+          <CharacterRow
+            key={row.key}
+            title={row.title}
+            characters={row.characters}
+          />
+        ))}
+      </div>
     </div>
   );
 }
