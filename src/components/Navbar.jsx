@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Navbar() {
   return (
     <header
-      className="fixed inset-x-0 top-0 z-[60] flex items-center justify-between px-6 py-4 backdrop-blur-[6px] lg:px-14 lg:py-[22px]"
+      className="fixed inset-x-0 top-0 z-[60] mx-auto flex max-w-[1600px] items-center justify-between px-6 py-4 backdrop-blur-[6px] lg:px-14 lg:py-[22px]"
       style={{
         background:
           "linear-gradient(180deg, rgba(5,7,14,.88) 0%, rgba(5,7,14,.45) 55%, rgba(5,7,14,0) 100%)",

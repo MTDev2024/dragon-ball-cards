@@ -12,7 +12,7 @@ function RowCard({ character }) {
 
   return (
     <motion.div
-      className="relative aspect-[3/4] w-[212px] shrink-0 overflow-hidden rounded-xl border border-white/[.07] shadow-[0_8px_24px_rgba(0,0,0,.45)]"
+      className="relative aspect-[3/4] w-[clamp(150px,45vw,190px)] shrink-0 overflow-hidden rounded-xl border border-white/[.07] shadow-[0_8px_24px_rgba(0,0,0,.45)] sm:w-[212px]"
       style={{ background: "linear-gradient(165deg, #161c2c 0%, #0c111c 100%)" }}
       whileHover={{
         y: -6,

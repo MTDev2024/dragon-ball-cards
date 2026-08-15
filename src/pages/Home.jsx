@@ -49,7 +49,7 @@ function Home() {
       <Navbar />
       <Hero />
 
-      <div className="relative z-30 -mt-10 pb-10">
+      <main className="relative z-30 -mt-10 pb-10">
         {rows.map((row) => (
           <CharacterRow
             key={row.key}
@@ -57,7 +57,7 @@ function Home() {
             characters={row.characters}
           />
         ))}
-      </div>
+      </main>
 
       <Footer />
     </div>

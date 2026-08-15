@@ -37,7 +37,7 @@ const STAR_LAYOUTS = {
 const DRAGON_BALLS = [
   {
     left: 10.5,
-    top: 52,
+    top: 17,
     size: 56,
     stars: 1,
     glowOpacity: 0.34,
@@ -52,7 +52,7 @@ const DRAGON_BALLS = [
   },
   {
     left: 21,
-    top: 69,
+    top: 32,
     size: 46,
     stars: 2,
     glowOpacity: 0.3,
@@ -67,7 +67,7 @@ const DRAGON_BALLS = [
   },
   {
     left: 32,
-    top: 44,
+    top: 10,
     size: 66,
     stars: 3,
     glowOpacity: 0.36,
@@ -82,7 +82,7 @@ const DRAGON_BALLS = [
   },
   {
     left: 46,
-    top: 73,
+    top: 28,
     size: 42,
     stars: 4,
     glowOpacity: 0.28,
@@ -97,7 +97,7 @@ const DRAGON_BALLS = [
   },
   {
     left: 59,
-    top: 56,
+    top: 20,
     size: 52,
     stars: 5,
     glowOpacity: 0.32,
@@ -112,7 +112,7 @@ const DRAGON_BALLS = [
   },
   {
     left: 73,
-    top: 67,
+    top: 30,
     size: 60,
     stars: 6,
     glowOpacity: 0.34,
@@ -127,7 +127,7 @@ const DRAGON_BALLS = [
   },
   {
     left: 85.5,
-    top: 42,
+    top: 8,
     size: 48,
     stars: 7,
     glowOpacity: 0.3,
@@ -247,27 +247,29 @@ function Hero() {
       />
 
       {/* Shenron */}
-      <motion.img
-        src={shenron}
-        alt="Shenron"
-        className="pointer-events-none absolute left-1/2 top-[-28px] w-[1000px] -translate-x-1/2 opacity-[0.7] grayscale sepia saturate-[3] hue-rotate-[-10deg] brightness-[1.15] contrast-[1.05] drop-shadow-[0_0_50px_rgba(250,204,21,0.35)] lg:top-[-40px] lg:w-[1520px]"
-        style={{
-          maskImage:
-            "radial-gradient(78% 66% at 50% 34%, #000 42%, rgba(0,0,0,.55) 66%, rgba(0,0,0,0) 84%)",
-          WebkitMaskImage:
-            "radial-gradient(78% 66% at 50% 34%, #000 42%, rgba(0,0,0,.55) 66%, rgba(0,0,0,0) 84%)",
-        }}
-        animate={
-          reducedMotion
-            ? undefined
-            : { x: [0, -18, 0], y: [0, -10, 0], scale: [1, 1.012, 1] }
-        }
-        transition={
-          reducedMotion
-            ? undefined
-            : { duration: 24, repeat: Infinity, ease: "easeInOut" }
-        }
-      />
+      <div className="pointer-events-none absolute left-1/2 top-[20px] w-[380px] -translate-x-1/2 sm:top-[10px] sm:w-[520px] md:top-[-30px] md:w-[1100px] lg:top-[-40px] lg:w-[1520px]">
+        <motion.img
+          src={shenron}
+          alt=""
+          className="w-full opacity-[0.7] grayscale sepia saturate-[3] hue-rotate-[-10deg] brightness-[1.15] contrast-[1.05] drop-shadow-[0_0_50px_rgba(250,204,21,0.35)]"
+          style={{
+            maskImage:
+              "radial-gradient(78% 66% at 50% 34%, #000 42%, rgba(0,0,0,.55) 66%, rgba(0,0,0,0) 84%)",
+            WebkitMaskImage:
+              "radial-gradient(78% 66% at 50% 34%, #000 42%, rgba(0,0,0,.55) 66%, rgba(0,0,0,0) 84%)",
+          }}
+          animate={
+            reducedMotion
+              ? undefined
+              : { x: [0, -18, 0], y: [0, -10, 0], scale: [1, 1.012, 1] }
+          }
+          transition={
+            reducedMotion
+              ? undefined
+              : { duration: 24, repeat: Infinity, ease: "easeInOut" }
+          }
+        />
+      </div>
 
       {/* Voile de lisibilité */}
       <div

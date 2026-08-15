@@ -41,8 +41,8 @@ function CharacterRow({ title, characters }) {
   };
 
   return (
-    <section className="mb-[52px]">
-      <div className="mb-[18px] flex items-end justify-between px-6 md:px-12 lg:px-14">
+    <section className="mb-8 sm:mb-[52px]">
+      <div className="mx-auto mb-[18px] flex max-w-[1600px] items-end justify-between px-6 md:px-12 lg:px-14">
         <div className="flex items-center gap-3.5">
           <span
             className="block h-5 w-[3px] rounded-sm"
@@ -51,7 +51,7 @@ function CharacterRow({ title, characters }) {
           <h2 className="text-xl font-semibold tracking-[-0.01em] text-[#f4f4f6]">
             {title}
           </h2>
-          <span className="text-xs font-medium text-white/35">
+          <span className="text-xs font-medium text-white/50">
             {characters.length} fiches
           </span>
         </div>
@@ -64,7 +64,7 @@ function CharacterRow({ title, characters }) {
 
       <div
         ref={scrollRef}
-        className="flex gap-4 overflow-x-auto no-scrollbar px-6 md:px-12 lg:px-14 py-8 snap-x snap-mandatory scroll-smooth"
+        className="mx-auto flex max-w-[1600px] gap-4 overflow-x-auto no-scrollbar px-6 md:px-12 lg:px-14 py-5 sm:py-8 snap-x snap-mandatory scroll-smooth lg:gap-5"
       >
         {characters.map((character) => (
           <Link
